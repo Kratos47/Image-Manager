@@ -1,6 +1,10 @@
 
 import { TextureMan } from "./Texture/TextureManager.js"
 import { Texture } from "./Texture/Texture.js";
+
+import { ImageMan } from "./Image/ImageManager.js"
+import { Image } from "./Image/Image.js"
+
 import { setActiveScene } from './Globals.js';
 
 export default class Game extends Phaser.Scene {
@@ -20,6 +24,8 @@ export default class Game extends Phaser.Scene {
         setActiveScene(this);
 
         TextureMan.Create(1, 1);
+
+        ImageMan.Create(5, 2);
     }
 
     preload() {
@@ -72,18 +78,22 @@ export default class Game extends Phaser.Scene {
 
 
 
-        let RedBirdImage = this.textures.get(Texture.Name.Birds);
+        // let RedBirdImage = this.textures.get(Texture.Name.Birds);
         
-        RedBirdImage.add('redBird', 0, 47, 41, 48, 46);
+        // RedBirdImage.add('redBird', 0, 47, 41, 48, 46);
 
-        this.add.sprite(400, 200, Texture.Name.Birds, 'redBird');
+        ImageMan.Add(Image.Name.RedBird, Texture.Name.Birds, 47, 41, 48, 46);
+
+        this.add.sprite(400, 200, Texture.Name.Birds, Image.Name.RedBird);
 
 
-        let SitchImage = this.textures.get(Texture.Name.Stitch);
+        // let SitchImage = this.textures.get(Texture.Name.Stitch);
         
-        SitchImage.add('stitch', 0, 0, 0, 300, 410);
+        // SitchImage.add('stitch', 0, 0, 0, 300, 410);
 
-        this.add.sprite(400, 400, Texture.Name.Stitch, 'stitch');
+        ImageMan.Add(Image.Name.Stitch, Texture.Name.Stitch, 0, 0, 300, 410);
+
+        this.add.sprite(400, 400, Texture.Name.Stitch, Image.Name.Stitch);
 
 
 
